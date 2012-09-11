@@ -18,7 +18,7 @@
 									        	<input type="radio" name="gender" value="female" id="gender"/>Female</td>
 				</tr>
 				<tr>
-					<td>Enter your email-id</td><td><input type="text" name="email_id" id="email_id"/>
+					<td>Enter your email-id</td><td><input type="text" name="email_id" id="email_id"/><td id="email_error" style="display:none">This is invalid email-id</td>
 				</tr>
 				<tr>
 					<td>Enter your address</td><td><textarea rows="2" cols="20" name="address"></textarea></td>
@@ -54,11 +54,21 @@
 					pincode=$("#pincode").val();
 					description=$("#description").val();
 
+					//for required feild validation
 					if(name==""||age==""||gender==""||address==""||pincode==""||description==""||email_id=="")
-						
 						$("#error").show();
 					else
-						$("#error").hide();					
+						$("#error").hide();	
+
+					//email validation
+					//var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+
+						//if(!pattern.test(email_id))
+							//$("#email_error").show();
+						​//else
+							//$("#email_error").hide();
+
+										
 				});
 			});
 			
