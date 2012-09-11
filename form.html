@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 	<head>
+		<meta charset='utf-8'>
 	<script type="text/javascript" src="jquery-1.8.1.min.js"></script>
 	</head>
 	<body>
@@ -11,6 +12,7 @@
 				</tr>
 				<tr>
 					<td>Enter your age</td><td><input type="number" id="age" name="age"/></td>
+					<td id="age_error" style="display:none">Please enter valid ege...</td>
 				</tr>
 				<tr>
 					<td>
@@ -18,22 +20,25 @@
 									        	<input type="radio" name="gender" value="female" id="gender"/>Female</td>
 				</tr>
 				<tr>
-					<td>Enter your email-id</td><td><input type="text" name="email_id" id="email_id"/><td id="email_error" style="display:none">This is invalid email-id</td>
+					<td>Enter your email-id</td><td><input type="text" name="email_id" id="email_id"/></td>
+					<td id="email_error" style="display:none">Please enter valid email-id...</td>
 				</tr>
 				<tr>
-					<td>Enter your address</td><td><textarea rows="2" cols="20" name="address"></textarea></td>
+					<td>Enter your address</td><td><textarea rows="2" cols="20" name="address" id="address"></textarea></td>
 				</tr>
 				<tr>
 					<td>Enter your pincode</td><td><input type="number" id="pincode" name="pincode"/></td>
+					<td id="pincode_error" style="display:none">Please enter valid pincode...</td>
 				</tr>
 				<tr>
 					<td>You can add more description here</td><td><input type="text" id="description" name="description"/></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td id="error" style="display:none">Please fill all the fields.....</td>
+					<td id="error" style="display:none">Please fill all the fields...</td>
 				</tr>
 				<tr>
+					<td></td>
 					<td><input type="submit" value="Submit" id="submitbutton" name="submit"/></td>
 					<td><input type="submit" value="Show users" id="showuserbutton"/></td>
 				</tr>
@@ -60,15 +65,32 @@
 					else
 						$("#error").hide();	
 
-					//email validation
-					//var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i
+					//email-id validation
+					var emailPattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
 
-						//if(!pattern.test(email_id))
-							//$("#email_error").show();
-						​//else
-							//$("#email_error").hide();
+						if(!emailPattern.test(email_id))
+							$("#email_error").show();
+						else
+							$("#email_error").hide();	
 
-										
+					//pincode validation
+					//pincode must not contain any character
+					var numericPattern = /^\d*[0-9](|.\d*[0-9]|,\d*[0-9])?$/;
+    					if(!numericPattern.test(pincode)) 
+    						$("#pincode_error").show();
+						else
+							$("#pincode_error").hide();	
+
+
+					//age validation
+					//age must be number and positive
+    					if(!numericPattern.test(age) || age<0 ) 
+    						$("#age_error").show();
+						else
+							$("#age_error").hide();	
+
+
+
 				});
 			});
 			
