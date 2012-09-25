@@ -1,0 +1,63 @@
+
+#heading
+{
+	color: #483D8B;
+	font-weight: bold;
+	font-size: xx-large;
+	text-decoration:underline;
+}
+table 
+{
+	color: #483D8B;
+	padding: 25px ;
+	border-spacing: 15px;
+	font-weight: bold;
+}
+
+#registerationform
+{
+
+	background-color:#D8B0EE;
+	margin: auto;
+	width: 820px;
+	border-width:5px;
+	
+}
+body 
+{
+	background-color:#FFC0CB;
+	background-image:url('images/green.gif');
+}
+#error,#email_error,#pincode_error,#age_error
+{
+	color: #EA1F24;
+}
+#getUserForm
+{
+	background-color:#D8B0EE;
+	text-align: center;
+	width: 820px;
+	margin: auto;
+}
+#outer 
+{
+	border: 3px green solid;
+	width: 820px;
+	margin: auto;
+}
+#getusers
+{
+	width:200px;
+	height:40px;
+}
+#submitbutton
+{
+	
+	width:100px;
+	height:40px;	
+}
+#logo
+{
+	background: url("images/logo.jpeg") no-repeat scroll 0 0 transparent;
+    height: 135px;
+}

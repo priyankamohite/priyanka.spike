@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		 <link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="jquery-1.8.1.min.js"></script>
+	</head>
+	<body>
+		<div id="outer">
+			<form id="registerationform" action="http://blooming-beach-2334.herokuapp.com/users.json" method="POST"  enctype="application/json">
+				<table>
+					<tr>
+						<td id="logo"></td><td id="heading">Registeration Form</td>
+					</tr>
+					<!--<caption id="captionname">Registeration Form</caption>-->
+					<tr>
+						<td>Enter your name</td><td><input type="text" id="name" name="name"/></td>
+					</tr>
+					<tr>
+						<td>Enter your age</td><td><input type="number" id="age" name="age"/></td>	
+					</tr>
+					<tr>
+						<td>
+						Select your gender</td><td><input type="radio" name="gender" value="male" id="gender"/>Male
+										        	<input type="radio" name="gender" value="female" id="gender"/>Female</td>
+					</tr>
+					<tr>
+						<td>Enter your email-id</td><td><input type="text" name="email_id" id="email_id"/></td>	
+					</tr>
+					<tr>
+						<td>Enter your address</td><td><textarea rows="2" cols="20" name="address" id="address"></textarea></td>
+					</tr>
+					<tr>
+						<td>Enter your pincode</td><td><input type="number" id="pincode" name="pincode"/></td>	
+					</tr>
+					<tr>
+						<td>You can add more description here</td><td><textarea rows="2" cols="20" id="description" name="description"/></textarea></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td id="error" style="display:none">*Please fill all the fields...</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type="submit" value="Submit" id="submitbutton" name="submit"/></td>	
+					</tr>	
+				</table>
+			</form>
+			<form id="getUserForm" action="http://blooming-beach-2334.herokuapp.com/users.json" method="get" enctype="application/json">
+				<input type="submit" value="show all registered users" id="getusers" name="getusers"/>
+			</form>
+		</div>
+	<script type="text/javascript">
+			$(document).ready(function(){
+				$("#registerationform").submit(function(event){
+					name=$("#name").val();
+					age=$("#age").val();
+					gender = $("input[name='gender']:checked").val();
+					email_id=$("#email_id").val();
+					address=$("#address").val();
+					pincode=$("#pincode").val();
+					description=$("#description").val();
+					 var emailPattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
+					 var numericPattern = /^\d*[0-9](|.\d*[0-9]|,\d*[0-9])?$/;
+
+					//for required feild validation
+					 if(name==""||age==""|| !gender ||address==""||pincode==""||description==""||email_id=="")
+					 {
+					 	alert("All fields are mandatory...");
+					 	return false;
+					 }
+			
+					else if(!emailPattern.test(email_id))
+						{
+							alert("Please enter valid email-id");
+
+							return false;
+						}
+					 //pincode validation
+					 //pincode must not contain any character
+    	 				else if(!numericPattern.test(pincode) || pincode.length!=6)
+    	 				{ 
+    	 					alert("Please enter valid pincode");
+    						return false;
+    	 				}
+				
+					 //age validation
+					 //age must be number and positive
+    					else if(!numericPattern.test(age) || age<0 ) 
+    					{
+    						alert("Please enter valid age");
+    						return false;
+    					}
+					 	else 
+					 	{
+					 		return true;
+					 	}
+						
+						$("#registerationform").submit();
+
+				});
+			});
+			
+		</script>
+	</body>
+	
+</html>
